@@ -1,0 +1,166 @@
+1.1 Create new folder of project
+$ mkdir journal
+
+1.1.1 jump to the project folder
+$ cd journal
+
+1.2 Node initialization in the project folder
+$ npm init
+
+1.3 Install the packages
+$ npm install express mongoose
+
+1.3.1 Install the development packages
+$ npm install -D nodemon concurrently
+
+1.4 Create file index.js
+
+const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("<h1>Hello World!!!</h1>");
+});
+
+// PORT
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log(`Listening on port ${port}...`);
+});
+
+2.0 React App
+$ npx create-react-app client
+
+2.0.1 Delete folder node_modules and .git
+$ cd client
+$ rm -r node_modules
+$ rm -r .git
+
+2.0.2 Delete App.css App.test.js logo.svg
+
+2.1 Install Librery-Install the dependencies in the local node_modules folder
+$ cd client
+$ npm i
+$ npm i react-router-dom
+
+2.2 Add proxy to
+journal/client/package.json
+"proxy":"http://localhost:5000",
+
+
+2.3 Start FrontEnd and Backend together
+journal/package.json
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+....
+....
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.4"
+  }
+
+2.2.1 From Server Directory start server
+$ cd ..
+$ npm run dev
+
+2.3 on the client create
+/src/routes.js
+      <Switch>
+        <Route path="/links" exact>
+          <LinksPage />
+        </Route>
+      </Switch>
+
+2.4 on the client create Pages
+/scr/pages/RegisterPage.js
+           WelcomePage.js
+           ErrorPage.js
+
+2.5 Bootstrap in client
+$ npm install react-bootstrap bootstrap popper jquery
+
+2.5 Bootstrap in project folder
+$ npm install popper.js --save
+
+2.6 The following line can be included in your src/index.js or App.js file
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.js';
+
+
+2.7 Add Navbar, Form Footer from bootstrap
+
+2.8 RegisterPage.js
+2.8.1 Add http.hook.js
+2.8.2 Add message.hook.js
+2.8.2 Add RegisterContext.js
+
+3.0 Backend
+
+
+3.1 index.js 
+3.1.1 Add routes to index.js
+app.use(express.json({ extended: true }));
+app.use("/api/auth", require("./routes/regstatus.routes"));
+app.use("/api/link", require("./routes/link.routes"));
+app.use("/t", require("./routes/redirect.routes"));
+
+3.1.2
+create "routes" folder
+
+3.1.3 Configure Node.js 
+$ npm i config
+$ mkdir config
+$ vi config/default.json
+$ vi config/prpduction.json
+
+3.1.4 Bcrypt
+$ npm i bcryptjs
+
+    const hashedPassword = await bcrypt.hash(password, 12);
+    const user = new User({ email: email, password: hashedPassword });
+
+3.1.5 Express Validator
+$ npm i express-validator
+
+3.1.6 JSON Web Token
+$ npm i jsonwebtoken
+
+3.2 Create "models" folder
+User.js
+
+3.3 MongoDB.com
+Projects-> New Project -> NameYour Projecft -> Add Members and Set Permission -> Create Project ->Build Cluster(Free)-> Azure->Region->Create Cluster->Wait->CONNECT->
+Add Your Current IP Address-> Create User and password:Illya, tl123
+->Choose Connection Method->Connect your application
+Copy connection string to your application
+default.json
+"mongoUri":"mongodb+srv://Illya:<password>@cluster0.ojcyu.mongodb.net/<dbname>?retryWrites=true&w=majority"
+Replace <password> and <dbname>
+
+3.4 Bcrypt
+$ npm i bcryptjs
+
+    const hashedPassword = await bcrypt.hash(password, 12);
+    const user = new User({ email: email, password: hashedPassword });
+
+3.5 Express Validator
+$ npm i express-validator
+
+3.6 JSON Web Token
+$ npm i jsonwebtoken
+
+3.7 Middleware
+Create regstatus.middleware.js
+
+4.0 Client side
+hook/ regstatus.hook.js
+
+5.0
+React Carousel Image Gallery
+npm i react-image-gallery
+
+npm install bootstrap popper jquery
