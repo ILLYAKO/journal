@@ -6,6 +6,7 @@ import { RegisterContext } from "./context/RegisterContext";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { Loader } from "./components/Loader";
+// import {Omdb} from "../src/assets/shoppies-omdb-api/src/index"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.js";
 // import "bootstrap/dist/js/popper.min.js";
@@ -28,6 +29,7 @@ function App() {
         <Navbar isRegistered={isRegistered} />
         {console.log("isRegistered: ", isRegistered)}
         <div className="container">{routes}</div>
+        {/* <Omdb /> */}
         <Footer />
       </Router>
     </RegisterContext.Provider>

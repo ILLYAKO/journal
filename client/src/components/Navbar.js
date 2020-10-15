@@ -1,6 +1,6 @@
-import React, {useContext}  from "react";
+import React, { useContext } from "react";
 // import { NavLink, useHistory } from "react-router-dom";
-import {useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { RegisterContext } from "../context/RegisterContext";
 
@@ -13,11 +13,13 @@ export const Navbar = (props) => {
     regCont.logout();
     history.push("/");
   };
+  const omdbHandler = (event) => {
+    event.preventDefault();
+    history.push("/omdb");
+  };
 
   // let url = "#!";
   // console.log("Navbar isRegistered: ", props.isRegisteredd);
-
-
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -44,8 +46,8 @@ export const Navbar = (props) => {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#!">
-              Link
+            <a id="omdbId" className="nav-link" onClick={omdbHandler} href="#!">
+              OmDB
             </a>
           </li>
           <li className="nav-item dropdown">
@@ -97,12 +99,12 @@ export const Navbar = (props) => {
         {props.isRegistered ? (
           <ul className="navbar-nav ">
             <li className="nav-item">
-              <a className="nav-link">
+              <a className="nav-link" href="#!">
                 SingIn <span className="sr-only">(current)</span>
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" href="/" onClick={logoutHandler} >
+              <a className="nav-link active" href="/" onClick={logoutHandler}>
                 SingOut
               </a>
             </li>

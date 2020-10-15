@@ -5,6 +5,7 @@ import { RegisterPage } from "./pages/RegisterPage";
 import { ErrorPage } from "./pages/ErrorPage";
 import { LoginPage } from "./pages/LoginPage";
 import { UserPage } from "./pages/UserPage";
+import { OmdbPage } from "./pages/OmdbPage";
 
 export const useRoutes = (isRegistered) => {
   if (isRegistered) {
@@ -15,6 +16,9 @@ export const useRoutes = (isRegistered) => {
         </Route>
         <Route path="/welcome" exact>
           <WelcomePage />
+        </Route>
+        <Route path="/omdb" exact>
+          <OmdbPage />
         </Route>
         <Redirect to="/" />
       </Switch>

@@ -1,18 +1,17 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useHttp } from "../hooks/http.hook";
 import { useMessage } from "../hooks/message.hook";
-import { RegisterContext} from "../context/RegisterContext"
+// import { RegisterContext } from "../context/RegisterContext";
 
 export const RegisterPage = () => {
-
-  const regContext = useContext(RegisterContext)
+  // const regContext = useContext(RegisterContext);
   const message = useMessage();
   const { loading, request, error, clearError } = useHttp();
   const [form, setForm] = useState({
     username: "",
     email: "",
     password: "",
-    password_confirm:""
+    password_confirm: "",
   });
 
   useEffect(() => {
@@ -30,7 +29,9 @@ export const RegisterPage = () => {
 
   const registerHandler = async () => {
     try {
-      const data = await request("/api/regstatus/register", "POST", { ...form });
+      const data = await request("/api/regstatus/register", "POST", {
+        ...form,
+      });
       message(data.message);
     } catch (e) {}
   };
@@ -122,8 +123,8 @@ export const RegisterPage = () => {
           <div className="controls">
             <button
               className="btn btn-success"
-               disabled={loading} 
-               onClick={registerHandler} 
+              disabled={loading}
+              onClick={registerHandler}
             >
               Register
             </button>
