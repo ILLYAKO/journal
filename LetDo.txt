@@ -164,3 +164,5 @@ React Carousel Image Gallery
 npm i react-image-gallery
 
 npm install bootstrap popper jquery
+
+npm i react-paginate

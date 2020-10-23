@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { useRoutes } from "./routes";
 import { useRegStatus } from "./hooks/regstatus.hook";
@@ -16,23 +16,28 @@ function App() {
   const isRegistered = !!token;
   const routes = useRoutes(isRegistered);
 
+  useEffect(() => {
+    document.title = "Journal";
+  });
+
   if (!isReady) {
     return <Loader />;
   }
 
   return (
-    <RegisterContext.Provider
+    <div className="bg-light d-flex flex-column min-vh-100">
+    <RegisterContext.Provider 
       value={{ token, login, logout, userId, isRegistered }}
     >
       <Router>
         {/* {isRegistered && <Navbar />} */}
         <Navbar isRegistered={isRegistered} />
-        {console.log("isRegistered: ", isRegistered)}
+        {/* {console.log("isRegistered: ", isRegistered)} */}
         <div className="container">{routes}</div>
-        {/* <Omdb /> */}
         <Footer />
       </Router>
     </RegisterContext.Provider>
+    </div>
   );
 }
 

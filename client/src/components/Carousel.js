@@ -1,5 +1,5 @@
 import React from "react";
-import imagesCarousel from "../assets/imagesCarousel/imagesCarousel"
+// import imagesCarousel from "../assets/imagesCarousel/imagesCarousel"
 import slide01 from "../assets/imagesCarousel/1.jpg"
 import slide02 from "../assets/imagesCarousel/2.jpg"
 import slide03 from "../assets/imagesCarousel/3.jpg"
@@ -19,9 +19,7 @@ export const Carousel = () => (
 
     <div className="carousel-inner">
       <div className="carousel-item active">
-        <img src={slide01} className="d-block w-100" alt="..." />
-        {console.log('object: ', imagesCarousel[0].src)}
-        {}
+        <img src={slide01} className="d-block w-100" alt="..." />  
         <div className="carousel-caption d-none d-md-block">
           <h5>First slide label</h5>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>

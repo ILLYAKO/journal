@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import MovieSearchForm from "../components/MovieSearchForm";
 import MovieResult from "../components/MovieResult";
 import MovieNominations from "../components/MovieNominations";
@@ -15,63 +15,68 @@ export const OmdbPage = () => {
   const [disabledButtons, setDisabledButtons] = useState([]);
   const [isFiveNominants, setIsFiveNominants] = useState(false);
 
-  const movieNameHandler = (name) => {
-    // this.setState({ movieName: name });
-    setMovieName(name);
-  };
+  // const movieNameHandler = (name) => {
+  //   setMovieName(name);
+  // };
 
-  const serverResponseHandler = (serverResponse) => {
-    // this.setState({ serverResponse: serverResponse });
-    setServerResponse(serverResponse);
-  };
+  // const serverResponseHandler = (serverResponse) => {
+  //   // this.setState({ serverResponse: serverResponse });
+  //   setServerResponse(serverResponse);
+  // };
 
-  const movieNominationshandler = async (movie) => {
+  const movieNominationsHandler =async (movie) => {
+    console.log('movieNominationsHandler')
     // if (this.state.movieNominants.length <= 4) {
     if (movieNominants.length <= 4) {
+      console.log('movieNominationsHandler-1')
       // await this.setState({
       //   movieNominants: [...this.state.movieNominants, movie],
       //   disabledButtons: [...this.state.disabledButtons, movie.imdbID],
       // });
-      await setMovieNominants(...movieNominants, movie);
-      await setDisabledButtons(...disabledButtons, movie.imdbID);
+      // await setMovieNominants(...movieNominants, movie);
+     
+      await setMovieNominants([...movieNominants, movie])
+      await console.log('movieNominationsHandler-movie' , movie)
+      await console.log('movieNominationsHandler-movieNominants' , movieNominants)
+      await setDisabledButtons([...disabledButtons,movie.imdbID])
     } else {
       setIsFiveNominants(true);
+      console.log('movieNominationsHandler-2')
     }
     movieNominants.length <= 4
       ? setIsFiveNominants(false)
       : setIsFiveNominants(true);
+      console.log('OmdbPage-movieNominationsHandler[]: ', movieNominants)
   };
 
   const movieRemoveNominHandler = (imdbIDNumber) => {
     let arrayM = [...movieNominants];
     if (imdbIDNumber !== -1) {
       arrayM.splice(imdbIDNumber, 1);
-      setMovieNominants(arrayM);
-      setIsFiveNominants(false);
+       setMovieNominants(arrayM);
+       setIsFiveNominants(false);
     }
-    setDisabledButtons(
-      setDisabledButtons.filter((item) => {
-        return item !== imdbIDNumber;
-      })
-    );
+     setDisabledButtons(disabledButtons.filter((item) => {return item !== imdbIDNumber}));
   };
 
   return (
-    <div className="App">
-      <h1>The Shoppies</h1>
+    <div className="container text-center ">
+      <h1>OMDB List</h1>
       <MovieSearchForm
-        onSearcMovieName={movieNameHandler}
+        onSearcMovieName={setMovieName}
         serverResponse={serverResponse}
       />
-      <div className="row result nomination">
+      <div className="row bg-danger">
         <MovieResult
-          serverResponseHandler={serverResponseHandler}
-          movieName={movieName}
-          movieNominationshandler={movieNominationshandler}
-          disabledButtons={disabledButtons}
+          classVar={"col bg-warning"}
           serverResponse={serverResponse}
-        />
+          serverResponseHandler={setServerResponse}
+          movieName={movieName}
+          movieNominationsHandler={movieNominationsHandler}
+          disabledButtons={disabledButtons}          
+        />      
         <MovieNominations
+          classVar={"col"}
           movieNominants={movieNominants}
           isFiveNominants={isFiveNominants}
           movieRemoveNominHandler={movieRemoveNominHandler}
