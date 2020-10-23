@@ -18,19 +18,29 @@ const MovieNominations = (props) => {
           <h3>Thank you for your choice the 5 Nominates!</h3>
         </div>
       )}
-      {console.log('MovieNominants-props.movieNominants: ', props.movieNominants)}
-      {props.movieNominants.map((movie, index) => (
-        <li key={index}>
-          <div
-            className="movie-img"
-            style={{ backgroundImage: `url(${movie.Poster})` }}
-          ></div>
-          <p className="movie-dscr">
+     <div className="">
+     <ul className="list-group">
+     {props.movieNominants.map((movie, index) => (
+
+      <li key={index} className="row list-group-item d-flex justify-content-between align-items-center">
+        <img src={`${movie.Poster}`} className="col-4 img-thumbnail" alt={movie.Title}></img>
+ 
+          <p className="col-4">
             {movie.Title} ({movie.Year}) Nominate
           </p>
-          <button onClick={clickHandler(movie.imdbID)}>Remove</button>
+          <button className="col-4"
+          //  onClick={clickHandler(movie.imdbID)}
+          onClick={ ()=>{ props.movieRemoveNominHandler(movie.imdbID)}}
+          >Remove</button>
         </li>
-      ))}
+
+))}
+
+     </ul>
+
+     </div>
+
+
     </div>
   );
 };

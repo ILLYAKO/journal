@@ -20,7 +20,7 @@ const MovieResult = (props) => {
   const [totalPages, setTotalPages] = useState(0);
   const resultPerPage = 10
   // eslint-disable-next-line
-  const [disabledButtons, setDisabledButtons] = useState([]);
+  // const [disabledButtons, setDisabledButtons] = useState([]);
   const apikey= "7535d36f"
   const basicUrl= "https://www.omdbapi.com/?apikey="
   // eslint-disable-next-line
@@ -32,9 +32,9 @@ const MovieResult = (props) => {
     });
   };
 
-  const clickHandler = (movie) => {     
+  const clickNominateHandler = (movie) => {     
     props.movieNominationsHandler(movie);
-    setDisabledButtons(props.disabledButtons);
+    // setDisabledButtons(props.disabledButtons);
   };
 
   const omdbUrl = () => {
@@ -89,7 +89,7 @@ const MovieResult = (props) => {
               </p>
               <button className="col-4"
                 onClick={() => {
-                  clickHandler(movie);
+                  clickNominateHandler(movie);
                 }}
                 disabled={props.disabledButtons.includes(movie.imdbID)}
               >

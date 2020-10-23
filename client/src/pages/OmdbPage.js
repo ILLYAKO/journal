@@ -36,8 +36,6 @@ export const OmdbPage = () => {
       // await setMovieNominants(...movieNominants, movie);
      
       await setMovieNominants([...movieNominants, movie])
-      await console.log('movieNominationsHandler-movie' , movie)
-      await console.log('movieNominationsHandler-movieNominants' , movieNominants)
       await setDisabledButtons([...disabledButtons,movie.imdbID])
     } else {
       setIsFiveNominants(true);
@@ -73,10 +71,11 @@ export const OmdbPage = () => {
           serverResponseHandler={setServerResponse}
           movieName={movieName}
           movieNominationsHandler={movieNominationsHandler}
-          disabledButtons={disabledButtons}          
+          disabledButtons={disabledButtons} 
+          setDisabledButtons={setDisabledButtons}  
         />      
         <MovieNominations
-          classVar={"col"}
+          classVar={"col bg-danger"}
           movieNominants={movieNominants}
           isFiveNominants={isFiveNominants}
           movieRemoveNominHandler={movieRemoveNominHandler}
